@@ -148,6 +148,9 @@ function mpull(array $list, $method, $key_method = null) {
     } else {
       $value = $object;
     }
+    if ($key === null) {
+      $key = '';
+    }
     $result[$key] = $value;
   }
   return $result;
@@ -257,6 +260,9 @@ function ppull(array $list, $property, $key_property = null) {
     } else {
       $value = $object;
     }
+    if ($key === null) {
+      $key = '';
+    }
     $result[$key] = $value;
   }
   return $result;
@@ -304,6 +310,9 @@ function ipull(array $list, $index, $key_index = null) {
       $value = $array[$index];
     } else {
       $value = $array;
+    }
+    if ($key === null) {
+      $key = '';
     }
     $result[$key] = $value;
   }

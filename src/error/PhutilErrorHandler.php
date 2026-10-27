@@ -282,6 +282,12 @@ final class PhutilErrorHandler extends Phobject {
       throw new RuntimeException($str);
     }
 
+    // PHP 8.4+ deprecations are not failures. Let PHP report them and continue
+    // so a newer PHP does not abort Arcanist.
+    if ($num === E_DEPRECATED || $num === E_USER_DEPRECATED) {
+      return false;
+    }
+
     // See T13499. Convert all other runtime errors not handled in a more
     // specific way into runtime exceptions.
     throw new RuntimeException($str);
